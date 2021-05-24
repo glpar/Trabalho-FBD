@@ -1,0 +1,32 @@
+CREATE TABLE cliente{
+nome varchar(100),
+cpf varchar(11),
+CONSTRAINT cliente_pkey PRIMARY(cpf)
+);
+
+CREATE TABLE animal{
+id SERIAL,
+nome varchar(100),
+especie varchar(100),
+CONSTRAINT animal_pkey PRIMARY(id)
+);
+
+CREATE TABLE servico{
+id_ser varchar(100),
+valor double(15,2),
+CONSTRAINT servico_pkey PRIMARY KEY(id_ser)
+);
+
+CREATE TABLE venda{
+venda_id serial;
+cpf_cliente VARCHAR(11),
+id_animal int,
+id_ser VARCHAR(100),
+CONSTRAINT venda_pkey PRIMARY KEY(venda_id),
+CONSTRAINT venda_fkey1 FOREIGN KEY(cpf_cliente) REFERENCES cliente(cpf),
+CONSTRAINT venda_fkey1 FOREIGN KEY (id_animal) REFERENCES animal(id),
+CONSTRAINT venda_fkey1 FOREIGN KEY (id_servico) REFERENCES servico(id_ser)
+);
+
+
+
